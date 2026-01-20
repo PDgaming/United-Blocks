@@ -2,7 +2,7 @@ import { ConvexHttpClient } from 'convex/browser';
 import { api } from './src/convex/_generated/api';
 import { GameDig } from 'gamedig';
 
-const CONVEX_URL = Bun.env.PUBLIC_CONVEX_URL;
+const CONVEX_URL = Bun.env.CONVEX_URL;
 
 if (!CONVEX_URL) {
 	console.error('Error: PUBLIC_CONVEX_URL not found in environment.');
@@ -38,5 +38,5 @@ async function checkAndReport() {
 	console.log(`[${new Date().toLocaleTimeString()}] PC: Online | MC: ${mcRunning}`);
 }
 
-setInterval(checkAndReport, 3000);
+setInterval(checkAndReport, 10000);
 checkAndReport();

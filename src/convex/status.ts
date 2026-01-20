@@ -27,7 +27,7 @@ export const getStatus = query({
 			return { pcOnline: false, mcOnline: false };
 		}
 
-		const isPcOnline = Date.now() - status.lastSeen < 60000;
+		const isPcOnline = Date.now() - status.lastSeen < 30000;
 		return {
 			pcOnline: isPcOnline,
 			mcOnline: isPcOnline && status.mcStatus,
