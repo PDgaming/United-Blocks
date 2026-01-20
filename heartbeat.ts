@@ -2,7 +2,14 @@ import { ConvexHttpClient } from 'convex/browser';
 import { api } from './src/convex/_generated/api';
 import { GameDig } from 'gamedig';
 
-const client = new ConvexHttpClient('https://ceaseless-bandicoot-586.convex.cloud');
+const CONVEX_URL = Bun.env.PUBLIC_CONVEX_URL;
+
+if (!CONVEX_URL) {
+	console.error('Error: PUBLIC_CONVEX_URL not found in environment.');
+	process.exit(1);
+}
+
+const client = new ConvexHttpClient(CONVEX_URL);
 
 async function checkAndReport() {
 	let mcRunning = false;
