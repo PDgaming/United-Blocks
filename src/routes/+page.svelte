@@ -59,7 +59,7 @@
 
 	<!-- Hero Section -->
 	<section
-		class="relative overflow-hidden border-b border-border bg-gradient-to-b from-card to-background px-4 py-20 sm:px-6 lg:px-8"
+		class="relative overflow-hidden border-b border-border bg-linear-to-b from-card to-background px-4 py-20 sm:px-6 lg:px-8"
 	>
 		<div class="mx-auto max-w-4xl text-center">
 			<h2 class="mb-6 text-4xl font-bold sm:text-5xl lg:text-6xl">Ready to Play?</h2>
