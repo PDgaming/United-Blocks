@@ -4,27 +4,15 @@
 	import Icon from '@iconify/svelte';
 	import Footer from '../components/footer.svelte';
 
-	const statuss = useQuery(api.status.getStatus, {});
-	console.log(statuss.data);
-	const status = {
-		pcOnline: true,
-		mcOnline: true,
-		lastUpdated: new Date().toLocaleDateString()
-	};
-</script>
+	const status = useQuery(api.status.getStatus, {});
+	let lastUpdated: string = $state('');
 
-<!--
-{#if status.isLoading}
-	<p>Loading status...</p>
-{:else}
-	<span class={status.data.pcOnline ? 'online' : 'offline'}>
-		{status.data.pcOnline ? '🟢 Online' : '🔴 Offline (Power Cut?)'}
-	</span>
-	<span class={status.data.mcOnline ? 'online' : 'offline'}>
-		{status.data.mcOnline ? '⚔️ Running' : '💤 Stopped'}
-	</span>
-{/if}
--->
+	$effect(() => {
+		let lastSeenValue: number = status.data?.lastSeen ? status.data?.lastSeen : 0;
+		const dateObject = new Date(lastSeenValue);
+		lastUpdated = dateObject.toLocaleString();
+	});
+</script>
 
 <div class="min-h-screen bg-background text-foreground">
 	<!-- Header -->
@@ -68,14 +56,14 @@
 						</div>
 						<div class="flex items-center gap-2">
 							<div
-								class={`h-3 w-3 rounded-full ${status.pcOnline ? 'bg-green-500' : 'bg-red-500'}`}
+								class={`h-3 w-3 rounded-full ${status.data?.pcOnline ? 'bg-green-500' : 'bg-red-500'}`}
 							></div>
 							<span
 								class={`text-lg font-semibold ${
-									status.pcOnline ? 'text-green-500' : 'text-red-500'
+									status.data?.pcOnline ? 'text-green-500' : 'text-red-500'
 								}`}
 							>
-								{status.pcOnline ? '🟢 Online' : '🔴 Offline (Power Cut?)'}
+								{status.data?.pcOnline ? '🟢 Online' : '🔴 Offline (Power Cut?)'}
 							</span>
 						</div>
 					</div>
@@ -83,7 +71,7 @@
 					<div class="rounded-lg border border-border bg-background/50 p-4">
 						<p class="mb-2 text-sm text-muted-foreground">Status Description</p>
 						<p class="text-foreground">
-							{status.pcOnline
+							{status.data?.pcOnline
 								? 'The hosting server is currently online and responsive.'
 								: 'The hosting server is currently offline. This may be due to a power outage or maintenance.'}
 						</p>
@@ -103,14 +91,14 @@
 						</div>
 						<div class="flex items-center gap-2">
 							<div
-								class={`h-3 w-3 rounded-full ${status.mcOnline ? 'bg-green-500' : 'bg-red-500'}`}
+								class={`h-3 w-3 rounded-full ${status.data?.mcOnline ? 'bg-green-500' : 'bg-red-500'}`}
 							></div>
 							<span
 								class={`text-lg font-semibold ${
-									status.mcOnline ? 'text-green-500' : 'text-red-500'
+									status.data?.mcOnline ? 'text-green-500' : 'text-red-500'
 								}`}
 							>
-								{status.mcOnline ? '⚔️ Running' : '💤 Stopped'}
+								{status.data?.mcOnline ? '⚔️ Running' : '💤 Stopped'}
 							</span>
 						</div>
 					</div>
@@ -118,7 +106,7 @@
 					<div class="rounded-lg border border-border bg-background/50 p-4">
 						<p class="mb-2 text-sm text-muted-foreground">Status Description</p>
 						<p class="text-foreground">
-							{status.mcOnline
+							{status.data?.mcOnline
 								? 'The Minecraft server is running and accepting connections on both Java and Bedrock editions.'
 								: 'The Minecraft server is not currently running. Use the /start command in Discord to start it.'}
 						</p>
@@ -127,10 +115,14 @@
 
 				<!-- Last Updated -->
 				<div class="flex items-center gap-2 rounded-lg border border-border bg-background/50 p-4">
-					<Icon icon="lucide:activity" width="24" height="24" />
-					<!-- <Activity className="h-4 w-4 text-muted-foreground" /> -->
+					<Icon
+						icon="lucide:activity"
+						width="24"
+						height="24"
+						className="h-4 w-4 text-muted-foreground"
+					/>
 					<p class="text-sm text-muted-foreground">
-						Last updated: <span class="font-semibold text-foreground">{status.lastUpdated}</span>
+						Last updated: <span class="font-semibold text-foreground">{lastUpdated}</span>
 					</p>
 				</div>
 
