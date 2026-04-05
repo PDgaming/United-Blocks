@@ -8,6 +8,9 @@
 	setupConvex(PUBLIC_CONVEX_URL);
 </script>
 
-<svelte:head><link rel="icon" href={favicon} /></svelte:head>
+<svelte:head>
+	<title>United Blocks</title>
+	<link rel="icon" href={favicon} />
+</svelte:head>
 
 {@render children()}
