@@ -26,6 +26,7 @@ async function checkAndReport() {
 		);
 
 		mcRunning = !!state;
+		// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	} catch (e) {
 		mcRunning = false;
 		console.log(`[${new Date().toLocaleTimeString()}] MC Server: Offline`);
