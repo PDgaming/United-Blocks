@@ -2,7 +2,19 @@ import { ConvexHttpClient } from 'convex/browser';
 import { api } from './src/convex/_generated/api';
 import { GameDig } from 'gamedig';
 
-const CONVEX_URL = Bun.env.PUBLIC_CONVEX_URL;
+let CONVEX_URL: string | undefined = undefined;
+
+const args = Bun.argv.slice(2);
+if (args[0] == 'dev') {
+	console.log('Using dev environment');
+	CONVEX_URL = Bun.env.PUBLIC_CONVEX_URL;
+} else if (args[0] == 'prod') {
+	console.log('Using prod environment');
+	CONVEX_URL = Bun.env.PUBLIC_PROD_CONVEX_URL;
+} else {
+	console.error('Error: Invalid argument. Please use either "dev" or "prod".');
+	process.exit(1);
+}
 
 if (!CONVEX_URL) {
 	console.error('Error: PUBLIC_CONVEX_URL not found in environment.');
