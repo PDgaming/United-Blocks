@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
 	import { resolve } from '$app/paths';
+	import Footer from './components/footer.svelte';
 
 	let copiedJava = $state(false);
 	let copiedBedrock = $state(false);
@@ -11,17 +12,17 @@
 			copiedBedrock = true;
 			setTimeout(() => {
 				copiedBedrock = false;
-			}, 2000);
+			}, 500);
 		} else {
 			copiedJava = true;
 			setTimeout(() => {
 				copiedJava = false;
-			}, 2000);
+			}, 500);
 		}
 	}
 
 	const javaAddress = 'availability-implement.gl.joinmc.link';
-	const javaVersion = '1.21.10';
+	const javaVersion = '1.21.11';
 	const bedrockAddress = 'catalog-walls.gl.at.ply.gg';
 	const bedrockPort = '9976';
 	const discordLink = 'YOUR_DISCORD_INVITE_LINK_HERE';
@@ -247,9 +248,5 @@
 	</section>
 
 	<!-- Footer -->
-	<footer class="border-t border-border bg-card px-4 py-8 sm:px-6 lg:px-8">
-		<div class="mx-auto max-w-6xl text-center text-sm text-muted-foreground">
-			<p>© 2025 Minecraft Server. Not affiliated with Minecraft or Microsoft.</p>
-		</div>
-	</footer>
+	<Footer />
 </div>

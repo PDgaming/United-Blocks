@@ -2,6 +2,7 @@
 	import { useQuery } from 'convex-svelte';
 	import { api } from '../../convex/_generated/api';
 	import Icon from '@iconify/svelte';
+	import Footer from '../components/footer.svelte';
 
 	const statuss = useQuery(api.status.getStatus, {});
 	console.log(statuss.data);
@@ -12,24 +13,18 @@
 	};
 </script>
 
-<!-- <div class="status-card">
-	{#if status.isLoading}
-		<p>Loading status...</p>
-	{:else}
-		<div class="indicator">
-			<span>Computer:</span>
-			<span class={status.data.pcOnline ? 'online' : 'offline'}>
-				{status.data.pcOnline ? '🟢 Online' : '🔴 Offline (Power Cut?)'}
-			</span>
-		</div>
-		<div class="indicator">
-			<span>Minecraft Server:</span>
-			<span class={status.data.mcOnline ? 'online' : 'offline'}>
-				{status.data.mcOnline ? '⚔️ Running' : '💤 Stopped'}
-			</span>
-		</div>
-	{/if}
-</div> -->
+<!--
+{#if status.isLoading}
+	<p>Loading status...</p>
+{:else}
+	<span class={status.data.pcOnline ? 'online' : 'offline'}>
+		{status.data.pcOnline ? '🟢 Online' : '🔴 Offline (Power Cut?)'}
+	</span>
+	<span class={status.data.mcOnline ? 'online' : 'offline'}>
+		{status.data.mcOnline ? '⚔️ Running' : '💤 Stopped'}
+	</span>
+{/if}
+-->
 
 <div class="min-h-screen bg-background text-foreground">
 	<!-- Header -->
@@ -152,9 +147,5 @@
 	</section>
 
 	<!-- Footer -->
-	<footer class="border-t border-border bg-card/50 px-4 py-8 sm:px-6 lg:px-8">
-		<div class="mx-auto max-w-6xl text-center text-sm text-muted-foreground">
-			<p>© 2026 Minecraft Server. Not affiliated with Minecraft or Microsoft.</p>
-		</div>
-	</footer>
+	<Footer />
 </div>
