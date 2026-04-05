@@ -41,6 +41,7 @@
 		"wrangler": "^4.56.0"
 	},
 	"dependencies": {
+		"@iconify/svelte": "^5.2.1",
 		"@types/gamedig": "^5.0.3",
 		"convex": "^1.31.5",
 		"convex-svelte": "^0.0.12",
