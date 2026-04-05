@@ -2,6 +2,7 @@
 	import Icon from '@iconify/svelte';
 	import { resolve } from '$app/paths';
 	import Footer from './components/footer.svelte';
+	import { PUBLIC_DISCORD_INVITE_LINK } from '$env/static/public';
 
 	let copiedJava = $state(false);
 	let copiedBedrock = $state(false);
@@ -25,7 +26,7 @@
 	const javaVersion = '1.21.11';
 	const bedrockAddress = 'catalog-walls.gl.at.ply.gg';
 	const bedrockPort = '9976';
-	const discordLink = 'YOUR_DISCORD_INVITE_LINK_HERE';
+	const discordLink = PUBLIC_DISCORD_INVITE_LINK;
 </script>
 
 <div class="min-h-screen bg-background text-foreground">
