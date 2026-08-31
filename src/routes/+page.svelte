@@ -22,10 +22,10 @@
 		}
 	}
 
-	const javaAddress = 'availability-implement.gl.joinmc.link';
-	const javaVersion = '1.21.11';
-	const bedrockAddress = 'catalog-walls.gl.at.ply.gg';
-	const bedrockPort = '9976';
+	const javaAddress = 'appearances-girls.tun.ply.gg';
+	const javaVersion = '26.2';
+	const bedrockAddress = 'appearances-wing.tun.ply.gg';
+	const bedrockPort = '16425';
 	const discordLink = PUBLIC_DISCORD_INVITE_LINK;
 </script>
 
