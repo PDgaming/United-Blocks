@@ -210,7 +210,7 @@
 					<p class="mb-4 text-muted-foreground">
 						Use the @PervertedOldMan bot in the Discord <code
 							class="rounded bg-card px-2 py-1 text-sm">game-chat</code
-						> channel to manage the server.
+						> channel to start the server.
 					</p>
 					<div class="rounded-lg border border-border bg-background p-4">
 						<p class="font-mono text-sm">/start</p>
