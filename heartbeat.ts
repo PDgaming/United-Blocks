@@ -47,7 +47,6 @@ async function checkAndReport() {
 			mcRunning = !!state;
 		} catch (e) {
 			mcRunning = false;
-			console.log(`MC Server: Offline`);
 		}
 
 		await convexClient.mutation(api.status.reportStatus, {
